@@ -1,1 +1,41 @@
-This is the registration form.
+
+
+<form onsubmit="return validateForm()" method="post" name="registration" >
+  <div class="field">
+      <label>Username:</label> <input type="text" name="uname"/>
+  </div>
+  <div class="field">
+      <label> Password:</label> <input type="password" name="password" class="password"/>
+  </div>
+  <div class="field">
+      <label>Re-type Password:</label> <input type="password" name="re-password" class="re-password"/>
+  </div>
+  <div class="field">
+    <label>Gender:</label> <input type="radio" name="gender"/> Male
+    <input type="radio" name="gender" />Female
+  </div>
+  <div class="field">
+    <label>Country:</label> <select class="country">
+    <option value="select">Select</option>
+    <option value="Australia">Australia</option>
+    <option value="United States">United States</option>
+    <option value="India">India</option>
+
+  </select>
+  </div>
+  <div class="field">
+    <label>State:</label> <select class="state">
+    <option value="select">Select</option>
+
+    </option>
+  </select>
+  </div>
+  <div class="field">
+    <label>City:</label> <select class="city">
+    <option value="select">Select</option>
+
+  </select>
+  </div>
+  <input type="submit" class="submit-btn" value="Submit"/>
+
+</form>
