@@ -2,12 +2,33 @@
  * Created by abhi on 27/09/16.
  */
 
-function validateForm() {
-
-    if ($(".password").val() != $(".re-password").val()) {
+function validateFormSubmit() {
+    
+    var password = document.registration.password.value;
+    var rePassword = document.registration.rePassword.value;
+    if (password != rePassword) {
         alert("Passwords do not match.");
         return false;
     }
+    var xhttp = new XMLHttpRequest();
+    var url = "/registration";
+    var name = document.registration.uname.value;
+    var gender = document.querySelector("input[name=gender]:checked").value;
+    var country = document.registration.country.value;
+    var state = document.registration.state.value;
+    var city = document.registration.city.value;
+   
+    var param = "username="+name+"&password="+password+"&gender="+gender+"&country="+country+"&state="+state+"&city="+city;
+    xhttp.open("POST",url,true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.onreadystatechange = function(){
+        if(xhttp.readyState == 4 && xhttp.status == 200){
+            alert(xhttp.responseText);
+        }
+    };
+    xhttp.send(param);
+    return false;
+
 
 }
 
@@ -58,22 +79,29 @@ $(document).ready(function(){
 
     $(".country").change(function(){
 
-       console.log($(".state").not(":first-child"));
+       //console.log($(".state").not(":first-child"));
         $(".state").not(":first-child").empty();
         var countrySelected = $(".country").val();
         for (var i=0; i<countryList.length; i++ )
         {
             if (countryList[i].country == countrySelected)
             {
+                $(".state").append($("<option></option>"));
                 var stateList = countryList[i].states;
                 for(var j=0; j<stateList.length; j++)
-                {
-                    $(".state").append($("<option></option>").attr("value",stateList[j].stateName).text(stateList[j].stateName));
+                {;
+                    $(".state").append($("<option></option>").text(stateList[j].stateName));
 
                 }
 
             }
         }
+        var e = document.getElementsByClassName("country");
+       console.log(e);
+        e = e[0];
+
+        var selectedValue = e.options[e.selectedIndex].value;
+        console.log(selectedValue);
     });
 
 
@@ -103,6 +131,7 @@ $(document).ready(function(){
 
         }
     })
+
 
 });
 

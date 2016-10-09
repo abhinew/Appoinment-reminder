@@ -1,6 +1,6 @@
 
 
-<form onsubmit="return validateForm()" method="post" name="registration" >
+<form onsubmit="return validateFormSubmit()"  method="post" name="registration" >
   <div class="field">
       <label>Username:</label> <input type="text" name="uname"/>
   </div>
@@ -8,14 +8,14 @@
       <label> Password:</label> <input type="password" name="password" class="password"/>
   </div>
   <div class="field">
-      <label>Re-type Password:</label> <input type="password" name="re-password" class="re-password"/>
+      <label>Re-type Password:</label> <input type="password" name="rePassword" class="re-password"/>
   </div>
   <div class="field">
-    <label>Gender:</label> <input type="radio" name="gender"/> Male
-    <input type="radio" name="gender" />Female
+    <label>Gender:</label> <input type="radio" name="gender" value="0"/> Male
+    <input type="radio" name="gender" value="1"/>Female
   </div>
   <div class="field">
-    <label>Country:</label> <select class="country">
+    <label>Country:</label> <select name="country" class="country">
     <option value="select">Select</option>
     <option value="Australia">Australia</option>
     <option value="United States">United States</option>
@@ -24,14 +24,14 @@
   </select>
   </div>
   <div class="field">
-    <label>State:</label> <select class="state">
+    <label>State:</label> <select name="state" class="state">
     <option value="select">Select</option>
 
     </option>
   </select>
   </div>
   <div class="field">
-    <label>City:</label> <select class="city">
+    <label>City:</label> <select name="city" class="city">
     <option value="select">Select</option>
 
   </select>
